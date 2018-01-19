@@ -169,7 +169,6 @@ unsigned long long read_from_stream()
 		printLastError(" Failed stream ReadFile");
 		return 0;
 	}
-	//printf(" read_from_stream = %llu\n", buf);
 	return buf;
 }
 
@@ -205,21 +204,9 @@ int drive_info(const std::string &path)
 	return -1;
 }
 
-/*
-unsigned long long GCD(unsigned long long a, unsigned long long b)  //наибольший общий делитель
-{    
-	return b ? GCD(b, a%b) : a;
-}
-
-unsigned long long LCM(unsigned long long a, unsigned long long b) //наименьшее общее кратное
-{
-	return a / GCD(a, b) * b;
-}
-*/
 
 int main(int argc, char* argv[])
 {
-
 	unsigned long long addr = 0;
 	unsigned long long startnonce = 0;
 	unsigned long long nonces = 0;
@@ -297,12 +284,10 @@ int main(int argc, char* argv[])
 		GetCurrentDirectoryA(MAX_PATH, Buffer);
 		std::string _path = Buffer;
 		out_path = _path + "\\" + out_path;
-		//printf("GetCurrentDirectory %s\n", out_path.c_str());
 	}
 	if (out_path.rfind("\\") < out_path.length() - 1) out_path += "\\";
 
 	printf("Checking directory...\n");
-	//printf("GetCurrentDirectory %s\n", out_path.c_str());
 	if (!CreateDirectoryA(out_path.c_str(), nullptr) && ERROR_ALREADY_EXISTS != GetLastError())
 	{
 		printLastError("Can't create directory " + out_path + " for plots");
@@ -323,12 +308,10 @@ int main(int argc, char* argv[])
 	printf("\tBytes per Sector: %u\n", bytesPerSector);
 	printf("\tSectors per Cluster: %u\n", sectorsPerCluster);
 
-
-
 	// whole free space
 	if (nonces == 0) 	nonces = getFreeSpace(out_path.c_str()) / PLOT_SIZE;
 
-	// ajusting nonces 
+	// adjusting nonces 
 	nonces = (nonces / (bytesPerSector / SCOOP_SIZE)) * (bytesPerSector / SCOOP_SIZE);
 
 	std::string filename = std::to_string(addr) + "_" + std::to_string(startnonce) + "_" + std::to_string(nonces) + "_" + std::to_string(nonces);
@@ -342,7 +325,7 @@ int main(int argc, char* argv[])
 		exit(-1);
 	}
 	unsigned long long nonces_done = read_from_stream();
-	if (nonces_done == nonces) // exit
+	if (nonces_done == nonces)
 	{
 		printColouredMessage("File is already finished. Delete the existing file to start over\n", RED);
 		CloseHandle(ofile_stream);
@@ -362,7 +345,6 @@ int main(int argc, char* argv[])
 		CloseHandle(ofile_stream);
 		exit(-1);
 	}
-
 	
 	// reserve free space for plot
 	LARGE_INTEGER liDistanceToMove;
@@ -399,7 +381,7 @@ int main(int argc, char* argv[])
 	// check free RAM
 	if (freeRAM < nonces_per_thread * threads * PLOT_SIZE * 2) nonces_per_thread = freeRAM / threads / PLOT_SIZE / 2;
 
-	//ajusting
+	//adjusting
 	nonces_per_thread = (nonces_per_thread / (bytesPerSector / SCOOP_SIZE)) * (bytesPerSector / SCOOP_SIZE);
 
 	SetConsoleTextAttribute(hConsole, colour::BLUE);
@@ -431,8 +413,6 @@ int main(int argc, char* argv[])
 	printf(" OK\n");
 	SetConsoleTextAttribute(hConsole, colour::GRAY);
 
-
-
 	unsigned long long t_timer;
 	unsigned long long x = 0;
 	unsigned long long leftover = 0;
@@ -449,7 +429,7 @@ int main(int argc, char* argv[])
 			if (leftover >= threads*(bytesPerSector / SCOOP_SIZE))
 			{
 				nonces_per_thread = leftover / threads;
-				//ajusting
+				//adjusting
 				nonces_per_thread = (nonces_per_thread / (bytesPerSector / SCOOP_SIZE)) * (bytesPerSector / SCOOP_SIZE);
 			}
 			else

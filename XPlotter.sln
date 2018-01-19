@@ -9,6 +9,12 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Debug|x64 = Debug|x64
+		Release AVX|Win32 = Release AVX|Win32
+		Release AVX|x64 = Release AVX|x64
+		Release AVX2|Win32 = Release AVX2|Win32
+		Release AVX2|x64 = Release AVX2|x64
+		Release SSE|Win32 = Release SSE|Win32
+		Release SSE|x64 = Release SSE|x64
 		Release|Win32 = Release|Win32
 		Release|x64 = Release|x64
 	EndGlobalSection
@@ -17,6 +23,18 @@ Global
 		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Debug|Win32.Build.0 = Debug|Win32
 		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Debug|x64.ActiveCfg = Debug|x64
 		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Debug|x64.Build.0 = Debug|x64
+		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release AVX|Win32.ActiveCfg = Release AVX|Win32
+		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release AVX|Win32.Build.0 = Release AVX|Win32
+		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release AVX|x64.ActiveCfg = Release AVX|x64
+		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release AVX|x64.Build.0 = Release AVX|x64
+		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release AVX2|Win32.ActiveCfg = Release AVX2|Win32
+		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release AVX2|Win32.Build.0 = Release AVX2|Win32
+		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release AVX2|x64.ActiveCfg = Release AVX2|x64
+		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release AVX2|x64.Build.0 = Release AVX2|x64
+		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release SSE|Win32.ActiveCfg = Release SSE|Win32
+		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release SSE|Win32.Build.0 = Release SSE|Win32
+		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release SSE|x64.ActiveCfg = Release SSE|x64
+		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release SSE|x64.Build.0 = Release SSE|x64
 		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release|Win32.ActiveCfg = Release|Win32
 		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release|Win32.Build.0 = Release|Win32
 		{48AEE4CD-8F38-4CCE-A72B-2D81A9AEE4B1}.Release|x64.ActiveCfg = Release|x64
